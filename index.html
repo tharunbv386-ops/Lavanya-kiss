@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Love for Lavanya ❤️</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; overflow: hidden;
+    display: grid; place-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: linear-gradient(135deg,#ffd6e7,#fff1f7,#ffd9d9);
+  }
+  .card {
+    width: min(92vw, 430px); padding: 34px 24px 38px;
+    text-align: center; border-radius: 28px;
+    background: rgba(255,255,255,.78);
+    box-shadow: 0 20px 60px rgba(150,50,90,.18);
+    backdrop-filter: blur(10px);
+    animation: pop .8s ease both;
+  }
+  h1 { color:#d52f65; margin:8px 0 4px; font-size:32px; }
+  p { color:#7a4056; margin:0 0 20px; }
+  .cat {
+    position: relative; width: 190px; height: 150px; margin: 12px auto 8px;
+    animation: float 2.6s ease-in-out infinite;
+  }
+  .head {
+    position:absolute; left:35px; top:25px; width:120px; height:105px;
+    background:#f3a35c; border-radius:50% 50% 47% 47%;
+    border:4px solid #a85d2b;
+  }
+  .ear {
+    position:absolute; top:4px; width:48px; height:50px; background:#f3a35c;
+    border:4px solid #a85d2b; transform:rotate(35deg); border-radius:10px 30px 5px 25px;
+  }
+  .ear.left { left:25px; } .ear.right { right:25px; transform:rotate(55deg); }
+  .inner {
+    position:absolute; inset:8px; border-radius:8px 25px 5px 18px;
+    background:#ffb6c8;
+  }
+  .right .inner { border-radius:25px 8px 18px 5px; }
+  .eye {
+    position:absolute; top:57px; width:13px; height:13px; background:#40221b; border-radius:50%;
+  }
+  .eye.left { left:67px; } .eye.right { right:67px; }
+  .nose {
+    position:absolute; top:77px; left:91px; width:12px; height:9px;
+    background:#e56c8f; border-radius:50%;
+  }
+  .mouth {
+    position:absolute; top:84px; left:82px; width:30px; height:18px;
+    border-bottom:3px solid #54271f; border-radius:0 0 50% 50%;
+  }
+  .kiss {
+    position:absolute; left:135px; top:8px; font-size:45px;
+    animation: kiss 1.5s ease-in-out infinite;
+  }
+  .heart { position:absolute; font-size:25px; animation: rise 3s linear infinite; opacity:0; }
+  .h1 { left:12%; bottom:5%; animation-delay:.2s; }
+  .h2 { left:80%; bottom:2%; animation-delay:1s; }
+  .h3 { left:55%; bottom:0; animation-delay:1.7s; }
+  button {
+    border:0; border-radius:999px; padding:13px 25px; font-size:16px;
+    color:white; background:#e73570; cursor:pointer;
+    box-shadow:0 8px 20px rgba(231,53,112,.28);
+  }
+  @keyframes pop { from {opacity:0; transform:scale(.85)} to {opacity:1; transform:scale(1)} }
+  @keyframes float { 50% { transform:translateY(-8px) rotate(1deg)} }
+  @keyframes kiss { 50% { transform:translate(15px,-8px) scale(1.15); } }
+  @keyframes rise { 0% { transform:translateY(0) scale(.5); opacity:0 } 20%{opacity:1} 100% {transform:translateY(-100vh) scale(1.2);opacity:0} }
+</style>
+</head>
+<body>
+  <div class="heart h1">❤️</div><div class="heart h2">💗</div><div class="heart h3">💕</div>
+  <main class="card">
+    <div class="cat">
+      <div class="ear left"><div class="inner"></div></div>
+      <div class="ear right"><div class="inner"></div></div>
+      <div class="head">
+        <div class="eye left"></div><div class="eye right"></div>
+        <div class="nose"></div><div class="mouth"></div>
+      </div>
+      <div class="kiss">💋</div>
+    </div>
+    <h1>Love you, Lavanya ❤️</h1>
+    <p>Just a little cat kiss for you 🐱💋</p>
+    <button id="kissBtn" type="button">Tap for another kiss 💋</button>
+  </main>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const btn = document.getElementById('kissBtn');
+  const kiss = document.querySelector('.kiss');
+
+  btn.addEventListener('click', function () {
+    // Restart the kiss animation every time the button is tapped.
+    kiss.animate(
+      [
+        { transform: 'translate(0,0) scale(1)', opacity: 1 },
+        { transform: 'translate(30px,-15px) scale(1.45)', opacity: 1 },
+        { transform: 'translate(55px,-25px) scale(.75)', opacity: 0 }
+      ],
+      { duration: 900, easing: 'ease-out' }
+    );
+
+    // Create a little heart burst.
+    for (let i = 0; i < 5; i++) {
+      const heart = document.createElement('div');
+      heart.textContent = ['❤️','💗','💕','💖'][i % 4];
+      heart.style.position = 'fixed';
+      heart.style.left = (45 + Math.random() * 10) + 'vw';
+      heart.style.top = '45vh';
+      heart.style.fontSize = (18 + Math.random() * 15) + 'px';
+      heart.style.zIndex = '10';
+      heart.style.pointerEvents = 'none';
+      document.body.appendChild(heart);
+
+      heart.animate(
+        [
+          { transform: 'translate(0,0) scale(.6)', opacity: 0 },
+          { transform: 'translate(' + ((Math.random()-0.5)*120) + 'px,-60px) scale(1)', opacity: 1 },
+          { transform: 'translate(' + ((Math.random()-0.5)*180) + 'px,-180px) scale(.8)', opacity: 0 }
+        ],
+        { duration: 1200 + Math.random()*500, easing: 'ease-out' }
+      ).onfinish = () => heart.remove();
+    }
+  });
+});
+</script>
+</body>
+</html>
